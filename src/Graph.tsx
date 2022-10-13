@@ -104,17 +104,11 @@ export default function Graph() {
     height: '100%',
   };
 
-  const events = {
-    select: function (event: any) {
-      var { nodes, edges } = event;
-    },
-  };
   return (
     <>
       <GraphVis
         graph={graph}
         options={options}
-        events={events}
         getNetwork={(network) => {
           // manipulate graph here
         }}

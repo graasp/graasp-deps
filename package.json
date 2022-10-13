@@ -1,5 +1,6 @@
 {
   "name": "graasp-deps",
+  "homepage": "https://graasp.github.io/graasp-deps",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
