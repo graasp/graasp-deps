@@ -4,6 +4,17 @@ const fetch = require('cross-fetch');
 const { Octokit } = require('octokit');
 const { exit } = require('process');
 
+function requireEnv(envName) {
+  if (!(envName in process.env)) {
+    console.error(`Usage error: environment variable ${envName} is missing!`);
+    exit(1);
+  }
+}
+
+requireEnv('GITHUB_TOKEN');
+requireEnv('ORG_NAME');
+requireEnv('OUT_PATH');
+
 // Github SDK
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
@@ -12,8 +23,9 @@ const octokit = new Octokit({
 const org = process.env.ORG_NAME;
 const rawBaseUrl = 'https://raw.githubusercontent.com/';
 const manifestFilename = 'package.json';
-const gitProto = 'github:';
-const orgDepRegex = `${gitProto}([A-Za-z0-9_/-]*)(?:.git)?(?:#(.*))?`;
+const githubProto = 'github:';
+const gitProto = 'git://github.com/';
+const orgDepRegex = `(?:${githubProto}|${gitProto})([A-Za-z0-9_/-]*)(?:.git)?(?:#(.*))?`;
 
 const OctokitErrors = {
   NO_COMMIT_FOUND: 422,
@@ -66,7 +78,7 @@ async function fetchLastCommit(name, branch) {
 async function parseDeps(deps) {
   const isOrgDep = ([name, version]) =>
     (name.startsWith(org) || name.startsWith(`@${org}`)) &&
-    version.startsWith(gitProto);
+    (version.startsWith(githubProto) || version.startsWith(gitProto));
 
   const [orgDeps, otherDeps] = partition(Object.entries(deps), isOrgDep);
 
