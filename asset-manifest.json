@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/graasp-deps/static/css/main.15fc088f.css",
-    "main.js": "/graasp-deps/static/js/main.8e45c354.js",
+    "main.js": "/graasp-deps/static/js/main.193ff64e.js",
     "index.html": "/graasp-deps/index.html",
     "main.15fc088f.css.map": "/graasp-deps/static/css/main.15fc088f.css.map",
-    "main.8e45c354.js.map": "/graasp-deps/static/js/main.8e45c354.js.map"
+    "main.193ff64e.js.map": "/graasp-deps/static/js/main.193ff64e.js.map"
   },
   "entrypoints": [
     "static/css/main.15fc088f.css",
-    "static/js/main.8e45c354.js"
+    "static/js/main.193ff64e.js"
   ]
 }
