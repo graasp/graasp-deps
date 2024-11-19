@@ -5,4 +5,5 @@
 > We keep this project around for posterity but it will not receive any updates and won't be deployed daily.
 
 This repo provides a simple webapp that is actualized every day and shows the github dependencies between the graasp projects.
+
 It is deployed automatically to GitHub Pages for easy access.
